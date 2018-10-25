@@ -1,0 +1,148 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-sm-9 m-auto">
+      <h3 class="mb-5 mt-5">
+
+        <fa name="{{isEditing?'edit':'user-plus'}}"></fa>
+        {{isEditing?"Edit":"New"}}
+
+        Employee
+      </h3>
+
+      <form class="form" #f="ngForm" novalidate (ngSubmit)="f.valid && save()">
+
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="user"></fa>
+              </span>
+            </div>
+            <input type="text" class="form-control" id="fnm" name="fnm" required minlength="5" maxlength="15"
+              [(ngModel)]="employee.empName" #fnm=ngModel placeholder="First Name" />
+          </div>
+          <div class="alert alert-danger" *ngIf="(fnm.errors && (fnm.touched || fnm.dirty))">
+            <p *ngIf="(fnm.errors && (fnm.touched || fnm.dirty))">Please see that First Name <strong>
+                <span *ngIf="fnm.errors.required">is not left blank</span>
+                <span *ngIf="fnm.errors.minlength">is atleast 5 chars in length</span>
+              </strong>
+            </p>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="mobile"></fa>
+              </span>
+            </div>
+            <input type="text" class="form-control" id="mno" name="mno" required pattern="\d{10}" [(ngModel)]="employee.empMobile"
+              #mno=ngModel placeholder="Mobile Number" />
+          </div>
+          <div class="alert alert-danger" *ngIf="mno.errors && (mno.touched || mno.dirty)">
+            <p>Please see that Mobile Number <strong>
+                <span *ngIf="mno.errors.required">is not left blank</span>
+                <span *ngIf="mno.errors.pattern">is exactly 10 digits only</span>
+              </strong>
+            </p>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="envelope"></fa>
+              </span>
+            </div>
+            <input type="email" class="form-control" id="mail" name="mail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              [(ngModel)]="employee.empEmail" #mail=ngModel placeholder="Email ID" />
+          </div>
+          <div class="alert alert-danger" *ngIf="mail.errors && (mail.touched || mail.dirty)">
+            <p>Please see that Email ID <strong>
+                <span *ngIf="mail.errors.required">is not left blank</span>
+                <span *ngIf="mail.errors.pattern">is of correct format</span>
+              </strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="anchor"></fa>
+              </span>
+            </div>
+            <input type="number" class="form-control" id="basic" name="basic" required [(ngModel)]="employee.empBasic"
+              #basic=ngModel placeholder="Basic Salary" />
+          </div>
+          <div class="alert alert-danger" *ngIf="basic.errors && (basic.touched || basic.dirty)">
+            <p>Please see that Basic <strong>
+                <span *ngIf="basic.errors.required">is not left blank</span>
+                <span *ngIf="basic.errors.pattern">is of correct format</span>
+              </strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="gamepad"></fa>
+              </span>
+            </div>
+            <input type="text" class="form-control" id="dept" name="dept" required [(ngModel)]="employee.empDept" #dept=ngModel
+              placeholder="Department" />
+          </div>
+          <div class="alert alert-danger" *ngIf="dept.errors && (dept.touched || dept.dirty)">
+            <p>Please see that Department <strong>
+                <span *ngIf="dept.errors.required">is not left blank</span>
+                <span *ngIf="dept.errors.pattern">is of correct format</span>
+              </strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="gamepad"></fa>
+              </span>
+            </div>
+            <input type="text" class="form-control" id="gender" name="gender" required [(ngModel)]="employee.gender"
+              #dept=ngModel placeholder="Gender" />
+          </div>
+          <div class="alert alert-danger" *ngIf="dept.errors && (dept.touched || dept.dirty)">
+            <p>Please see that gender <strong>
+                <span *ngIf="dept.errors.required">is not left blank</span>
+                <span *ngIf="dept.errors.pattern">is of correct format</span>
+              </strong>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="calendar"></fa>
+              </span>
+            </div>
+            <input type="date" class="form-control" id="dob" name="dob" required [(ngModel)]="employee.dateOfBirth"
+              #dob=ngModel placeholder="Date of Birth" />
+          </div>
+          <div class="alert alert-danger" *ngIf="dob.errors.required && (dob.touched || dob.dirty)">
+            <p>Please see that date of birth <strong>is not left blank</strong>
+            </p>
+          </div>
+        </div>
+        <div>
+          <button class="btn btn-block btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

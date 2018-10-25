@@ -1,0 +1,53 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-sm-9 m-auto" *ngIf="!employee">
+      <h3>
+        <fa name="cog" animation="spin"></fa> Loading
+      </h3>
+    </div>
+    <div class="col-sm-9 m-auto" *ngIf="employee">
+      <h3 class="mb-5 mt-5">
+        <fa name="address-card"></fa>
+        Employee Details
+      </h3>
+      <div class="card">
+        <div class="card-header">
+          <h5 class="float-left"> {{employee.empName}}</h5>
+          <div class="btn-group float-right">
+            <a routerLink="/editEmployee/{{employee.empId}}" class="btn">
+              <fa name="edit"></fa>
+            </a>
+            <a routerLink="/delEmployee/{{employee.empId}}" class="btn">
+              <fa name="trash"></fa>
+            </a>
+
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <img [src]="employee.gender=='MALE'?gentLogo:ladyLogo" class="img-fluid" />
+            </div>
+            <div class="col-md-9">
+
+              <p>
+                <fa name="envelope"></fa> {{employee.empEmail}}
+              </p>
+              <p>
+                <fa name="mobile"></fa> {{employee.empMobile}}
+              </p>
+              <p>
+                <fa name="calendar"></fa> {{employee.empDept}}
+              </p>
+              <p>
+                <fa name="calendar"></fa> {{employee.dateOfBirth}}
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
